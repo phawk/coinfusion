@@ -32,6 +32,20 @@ module Coinfusion
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      g.skip_routes true
+      g.helper false
+      g.assets false
+      g.test_framework :rspec, fixture: false
+      g.helper_specs false
+      g.controller_specs false
+      g.system_tests false
+      g.view_specs false
+    end
+
+    # Removes field_with_errors div around validation failed fields
+    ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag.html_safe
+    end
   end
 end
