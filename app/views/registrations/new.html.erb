@@ -1,4 +1,12 @@
 <div>
-  <h1 class="font-bold text-4xl">Registrations#new</h1>
-  <p>Find me in app/views/registrations/new.html.erb</p>
+  <h1 class="font-bold text-2xl text-slate-700">Create your account</h1>
+
+  <%= form_with(model: @account, url: registrations_path, class: "mt-8") do |f| %>
+    <div class="mb-4">
+      <%= f.text_field :name, placeholder: "Your name", class: input_class %>
+    </div>
+    <div class="mb-4">
+      <%= f.text_field :name, placeholder: "Your name", class: input_class %>
+    </div>
+  <% end %>
 </div>
