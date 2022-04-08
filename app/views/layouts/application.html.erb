@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>Coinfusion</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,10 +9,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto my-8 px-5 block">
+  <body class="min-h-full bg-slate-50">
+    <main class="container mx-auto my-8 sm:my-12 flex flex-col items-center">
       <h1 class="font-bold inline-block text-2xl sm:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 mb-8 sm:mb-12">Coinfusion</h1>
-      <%= yield %>
+      <div class="w-full max-w-lg bg-white px-8 py-6 sm:px-12 sm:py-10 sm:rounded-3xl">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
