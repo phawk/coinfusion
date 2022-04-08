@@ -5,6 +5,12 @@ class RegistrationsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
+
+    if @account.save
+      redirect_to signup_success_path, notice: "Signed up successfully"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
