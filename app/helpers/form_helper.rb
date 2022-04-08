@@ -4,6 +4,6 @@ module FormHelper
   end
 
   def button_class
-    "bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl py-2.5 px-4 text-center text-lg sm:text-xl font-semibold w-full"
+    "bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl py-2.5 px-4 text-center text-lg sm:text-xl font-semibold w-full hover:bg-gradient-to-tr"
   end
 end
