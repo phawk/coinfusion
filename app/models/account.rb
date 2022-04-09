@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-  enum role: {
+  enum account_type: {
     individual: "individual",
     company: "company"
   }
@@ -10,12 +10,4 @@ class Account < ApplicationRecord
   validates :company_number, presence: true, if: :company?
   validates :date_of_birth, presence: true, if: :individual?
   validates :password, length: { minimum: 8 }
-
-  def individual?
-    account_type == "individual"
-  end
-
-  def company?
-    account_type == "company"
-  end
 end
