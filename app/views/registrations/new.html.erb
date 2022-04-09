@@ -2,32 +2,35 @@
 
 <%= form_with(model: @account, url: registrations_path, class: "mt-8") do |f| %>
   <%= render "shared/form_errors", object: f.object %>
-  <% if false%>
-  <p class="text-lg mb-2">I’m signing up as&hellip;</p>
-  <div class="mb-4 flex items-center space-x-4 sm:space-x-6 sm:text-lg">
-    <%= f.label :account_type, value: "individual", class: "flex items-center" do %>
-      <%= f.radio_button :account_type, "individual", class: radio_button_class %>
-      <span class="ml-1.5 sm:ml-2.5"><span class="hidden sm:inline">an </span>individual</span>
-    <% end %>
+  <%= turbo_frame_tag "account_types", data: { controller: "navigate" } do %>
+    <p class="text-lg mb-2">I’m signing up as&hellip;</p>
+    <div class="mb-4 flex items-center space-x-4 sm:space-x-6 sm:text-lg">
+      <%= f.label :account_type, value: "individual", class: "flex items-center" do %>
+        <%= f.radio_button :account_type, "individual", class: radio_button_class, data: { action: "change->navigate#to", url: new_registration_path({ account: { account_type: "individual" } }) } %>
+        <span class="ml-1.5 sm:ml-2.5"><span class="hidden sm:inline">an </span>individual</span>
+      <% end %>
 
-    <%= f.label :account_type, value: "company", class: "flex items-center" do %>
-      <%= f.radio_button :account_type, "company", class: radio_button_class %>
-      <span class="ml-1.5 sm:ml-2.5"><span class="hidden sm:inline">a </span>company</span>
+      <%= f.label :account_type, value: "company", class: "flex items-center" do %>
+        <%= f.radio_button :account_type, "company", class: radio_button_class, data: { action: "change->navigate#to", url: new_registration_path({ account: { account_type: "company" } }) } %>
+        <span class="ml-1.5 sm:ml-2.5"><span class="hidden sm:inline">a </span>company</span>
+      <% end %>
+    </div>
+    <% if @account.company? %>
+      <div class="mb-4">
+        <%= f.text_field :name, placeholder: "Company name", class: input_class %>
+      </div>
+      <div class="mb-4">
+        <%= f.text_field :company_number, placeholder: "Tax/Company number", class: input_class %>
+      </div>
+    <% else %>
+      <div class="mb-4">
+        <%= f.text_field :name, placeholder: "Your name", class: input_class %>
+      </div>
+      <div class="mb-4 flex items-center space-x-4 justify-between">
+        <%= f.date_select :date_of_birth, { use_short_month: true, start_year: Date.today.year - 80, end_year: Date.today.year - 13 }, placeholder: "D.O.B.", class: input_class %>
+      </div>
     <% end %>
-  </div>
-  <div class="mb-4">
-    <%= f.text_field :name, placeholder: "Company name", class: input_class %>
-  </div>
-  <div class="mb-4">
-    <%= f.text_field :company_number, placeholder: "Tax/Company number", class: input_class %>
-  </div>
   <% end %>
-  <div class="mb-4">
-    <%= f.text_field :name, placeholder: "Your name", class: input_class %>
-  </div>
-  <div class="mb-4 flex items-center space-x-4 justify-between">
-    <%= f.date_select :date_of_birth, { use_short_month: true, start_year: Date.today.year - 80, end_year: Date.today.year - 13 }, placeholder: "D.O.B.", class: input_class %>
-  </div>
   <div class="mb-4">
     <%= f.email_field :email, placeholder: "Email address", class: input_class %>
   </div>
