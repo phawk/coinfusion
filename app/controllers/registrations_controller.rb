@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
     @account = Account.new(account_params)
 
     if @account.save
+      sign_in(@account)
       redirect_to signup_success_path
     else
       render :new, status: :unprocessable_entity

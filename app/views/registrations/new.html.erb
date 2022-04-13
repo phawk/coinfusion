@@ -1,5 +1,9 @@
 <h1 class="font-bold text-2xl text-slate-700 text-center">Create your account</h1>
 
+<p class="text-center mt-1">
+  Have an account already? <%= link_to "Login", new_session_path, class: "text-blue-600 underline" %>
+</p>
+
 <%= form_with(model: @account, url: registrations_path, class: "mt-8") do |f| %>
   <%= render "shared/form_errors", object: f.object %>
   <%= turbo_frame_tag "account_types", data: { controller: "navigate" } do %>
