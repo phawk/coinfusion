@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+  attr_accessor :token
+
   enum account_type: {
     individual: "individual",
     company: "company"

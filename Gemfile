@@ -70,3 +70,6 @@ group :test do
   gem "capybara"
 end
 
+
+gem "graphql", "~> 2.0"
+gem "graphiql-rails", github: "rmosolgo/graphiql-rails", group: :development
