@@ -1,0 +1,24 @@
+<h1 class="font-bold text-2xl text-slate-700 text-center">Sign in</h1>
+
+<p class="text-center mt-1">
+  Need an account? <%= link_to "Register", new_registration_path, class: "text-blue-600 underline" %>
+</p>
+
+<%= form_with(url: sessions_path, class: "mt-8") do |f| %>
+  <div class="mb-4">
+    <%= f.email_field :email, placeholder: "Email address", class: input_class %>
+  </div>
+  <div class="mb-4">
+    <%= f.password_field :password, placeholder: "Password", class: input_class %>
+  </div>
+
+  <% if flash[:signin] %>
+    <div class="mb-4 bg-pink-100 text-pink-700 p-3 rounded-md text-center">
+      <%= flash[:signin] %>
+    </div>
+  <% end %>
+
+  <%= f.button type: "submit", class: button_class do %>
+    Login
+  <% end %>
+<% end %>
