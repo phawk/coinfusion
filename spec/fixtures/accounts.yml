@@ -1,0 +1,6 @@
+test:
+  account_type: individual
+  name: Test Account
+  email: test@example.com
+  password_digest: <%= BCrypt::Password.create('hunter2', cost: 1) %>
+  date_of_birth: 1990-01-01
