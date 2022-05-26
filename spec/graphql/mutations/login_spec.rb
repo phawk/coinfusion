@@ -22,8 +22,10 @@ RSpec.describe "mutation login" do
     <<~GQL
       mutation Login($email: String!, $password: String!) {
         login(
-          email: $email
-          password: $password
+          input: {
+            email: $email
+            password: $password
+          }
         ) {
           token
         }

@@ -29,11 +29,13 @@ RSpec.describe "mutation register" do
     <<~GQL
       mutation Register($accountType: AccountType!, $email: String!, $password: String!, $name: String!, $dateOfBirth: String!) {
         register(
-          accountType: $accountType,
-          email: $email,
-          password: $password,
-          name: $name,
-          dateOfBirth: $dateOfBirth
+          input: {
+            accountType: $accountType,
+            email: $email,
+            password: $password,
+            name: $name,
+            dateOfBirth: $dateOfBirth
+          }
         ) {
           name
           email

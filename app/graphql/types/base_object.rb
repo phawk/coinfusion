@@ -6,14 +6,14 @@ module Types
 
     private
 
-     def current_account
-       context[:current_account]
-     end
+    def current_account
+      context[:current_account]
+    end
 
-     def authenticate!
-       if current_account.blank?
-         raise GraphQL::ExecutionError, "Authentication failed, you must be signed in!"
-       end
-     end
+    def authenticate!
+      if current_account.blank?
+        raise GraphQL::ExecutionError, "Authentication failed, you must be signed in!"
+      end
+    end
   end
 end
